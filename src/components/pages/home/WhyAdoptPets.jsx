@@ -24,7 +24,7 @@ const WhyAdoptPets = () => {
     ];
 
     return (
-        <section className="section bg-accent">
+        <section className="section bg-background">
             <div className="container">
                 <div className="text-center">
                     <h2 className="section-title text-foreground">
