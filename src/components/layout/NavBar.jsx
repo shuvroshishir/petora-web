@@ -101,7 +101,7 @@ const NavBar = () => {
                         </Link>
 
                         <Link href="/register">
-                            <Button className="bg-primary text-background hover:opacity-90">
+                            <Button className="bg-gradient text-background hover:opacity-90">
                                 Get Started
                             </Button>
                         </Link>
@@ -169,7 +169,7 @@ const NavBar = () => {
                                     <Button
                                         fullWidth
                                         variant="solid"
-                                        className="bg-primary text-background hover:bg-primary/90"
+                                        className="bg-gradient text-background hover:bg-primary/90"
                                     >
                                         Get Started
                                     </Button>
