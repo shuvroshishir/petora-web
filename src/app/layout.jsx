@@ -24,10 +24,10 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Providers>
-          <header>
+          <header className="sticky top-0 z-50">
             <NavBar />
           </header>
-          <main className="min-h-screen bg-accent text-foreground flex-1">
+          <main className="min-h-screen bg-background text-foreground flex-1">
             {children}
           </main>
           <Footer />

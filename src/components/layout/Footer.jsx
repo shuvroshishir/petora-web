@@ -11,7 +11,7 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="bg-background">
+        <footer className="bg-accent border-t border-muted-foreground/20">
             <div className="container py-16">
                 <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
                     {/* Logo & Description */}
@@ -144,7 +144,7 @@ const Footer = () => {
                             and updates.
                         </p>
 
-                        <div className="flex overflow-hidden rounded-full  bg-white border border-black/10 ">
+                        <div className="flex overflow-hidden rounded-full  bg-white border border-gray-800/10 ">
                             <input
                                 type="email"
                                 placeholder="Enter your email"

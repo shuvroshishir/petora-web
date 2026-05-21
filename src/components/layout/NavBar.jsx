@@ -24,7 +24,7 @@ const NavBar = () => {
     ];
 
     return (
-        <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+        <nav className="shadow-sm bg-accent/80 backdrop-blur-xl">
             <div className="container flex h-16 items-center justify-between">
 
                 {/* Left */}
