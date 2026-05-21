@@ -39,28 +39,28 @@ const Footer = () => {
                         <div className="flex items-center gap-3">
                             <Link
                                 href="#"
-                                className="rounded-full border border-muted-foreground p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-orange-500 hover:bg-orange-500 hover:text-white"
+                                className="rounded-full border border-muted-foreground p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
                             >
                                 <FaFacebookF size={18} />
                             </Link>
 
                             <Link
                                 href="#"
-                                className="rounded-full border border-muted-foreground  p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-orange-500 hover:bg-orange-500 hover:text-white"
+                                className="rounded-full border border-muted-foreground  p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
                             >
                                 <FaInstagram size={18} />
                             </Link>
 
                             <Link
                                 href="#"
-                                className="rounded-full border border-muted-foreground  p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-orange-500 hover:bg-orange-500 hover:text-white"
+                                className="rounded-full border border-muted-foreground  p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
                             >
                                 <FaTwitter size={18} />
                             </Link>
 
                             <Link
                                 href="#"
-                                className="rounded-full border border-muted-foreground  p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-orange-500 hover:bg-orange-500 hover:text-white"
+                                className="rounded-full border border-muted-foreground  p-2.5 text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
                             >
                                 <FaLinkedinIn size={18} />
                             </Link>
@@ -77,7 +77,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     href="/"
-                                    className="transition-all duration-300 hover:pl-1 hover:text-orange-500"
+                                    className="transition-all duration-300 hover:pl-1 hover:text-amber-500"
                                 >
                                     Home
                                 </Link>
@@ -86,7 +86,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     href="/all-pets"
-                                    className="transition-all duration-300 hover:pl-1 hover:text-orange-500"
+                                    className="transition-all duration-300 hover:pl-1 hover:text-amber-500"
                                 >
                                     All Pets
                                 </Link>
@@ -95,7 +95,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     href="/dashboard/add-pet"
-                                    className="transition-all duration-300 hover:pl-1 hover:text-orange-500"
+                                    className="transition-all duration-300 hover:pl-1 hover:text-amber-500"
                                 >
                                     Add Pet
                                 </Link>
@@ -104,7 +104,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     href="/dashboard/my-requests"
-                                    className="transition-all duration-300 hover:pl-1 hover:text-orange-500"
+                                    className="transition-all duration-300 hover:pl-1 hover:text-amber-500"
                                 >
                                     My Requests
                                 </Link>
@@ -151,7 +151,7 @@ const Footer = () => {
                                 className="w-full bg-transparent px-5 py-3 text-sm outline-none text-muted-foreground"
                             />
 
-                            <button className="bg-orange-500 px-5 text-white transition-all duration-300 hover:bg-orange-600">
+                            <button className="bg-amber-500 px-5 text-white transition-all duration-300 hover:bg-amber-600">
                                 <FaArrowRight size={18} />
                             </button>
                         </div>
@@ -165,7 +165,7 @@ const Footer = () => {
                     </p>
 
                     <p className="flex items-center gap-1">
-                        Made with <FaHeart size={16} className="fill-orange-500 text-orange-500" /> by Shishir
+                        Made with <FaHeart size={16} className="fill-amber-500 text-amber-500" /> by Shishir
                     </p>
                 </div>
             </div>

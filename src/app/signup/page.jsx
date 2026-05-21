@@ -12,12 +12,11 @@ import {
     TextField,
 } from "@heroui/react";
 
-const LoginPage = () => {
+
+const SignUpPage = () => {
     const onSubmit = (e) => {
 
     }
-
-
     return (
         <section className="bg-background py-6">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8max-w-5xl">
@@ -58,11 +57,12 @@ const LoginPage = () => {
                             </Link>
 
                             <h1 className="mt-5 max-w-md text-6xl font-black leading-tight text-white">
-                                Welcome back to your furry family.
+                                Find your new best friend.
                             </h1>
 
                             <p className="mt-5 max-w-md text-lg leading-relaxed text-white/85">
-                                Reconnect with loving pets, manage your adoption requests, and continue exploring your perfect companion.
+                                Join our community of animal lovers and discover
+                                a streamlined adoption experience with Petora.
                             </p>
                         </div>
                     </div>
@@ -71,11 +71,12 @@ const LoginPage = () => {
                     <div className="flex items-center justify-center bg-background p-6  sm:px-10 ">
                         <div className="w-full max-w-md">
                             <h2 className="text-4xl font-black text-foreground mt-3">
-                                Welcome Back
+                                Create an account
                             </h2>
 
                             <p className="my-3 text-muted-foreground">
-                                Login to continue your pet adoption journey with Petora.
+                                Welcome! Please enter your details to get
+                                started.
                             </p>
 
 
@@ -83,6 +84,17 @@ const LoginPage = () => {
                             <Form
                                 onSubmit={onSubmit}
                                 className="flex w-full flex-col gap-4">
+                                <TextField isRequired name="name" type="text">
+                                    <Label>Name</Label>
+                                    <Input placeholder="Enter your name" />
+                                    <FieldError />
+                                </TextField>
+
+                                <TextField name="image" type="url">
+                                    <Label>Image URL</Label>
+                                    <Input placeholder="Enter an Image url" />
+                                    <FieldError />
+                                </TextField>
 
                                 <TextField
                                     isRequired
@@ -123,13 +135,36 @@ const LoginPage = () => {
                                     <FieldError />
                                 </TextField>
 
+                                <TextField
+                                    isRequired
+                                    minLength={8}
+                                    name="confirm-password"
+                                    type="password"
+                                    validate={(value) => {
+                                        if (value.length < 8) {
+                                            return "Password must be at least 8 characters";
+                                        }
+                                        if (!/[A-Z]/.test(value)) {
+                                            return "Password must contain at least one uppercase letter";
+                                        }
+                                        if (!/[0-9]/.test(value)) {
+                                            return "Password must contain at least one number";
+                                        }
+                                        return null;
+                                    }}
+                                >
+                                    <Label>Confirm Password</Label>
+                                    <Input placeholder="Confirm your password" />
+                                    <FieldError />
+                                </TextField>
+
                                 {/* Button */}
                                 <Button
                                     fullWidth
                                     size="lg"
                                     className="bg-gradient font-semibold text-white mt-3"
                                 >
-                                    Sign In
+                                    Sign Up
                                 </Button>
 
                             </Form>
@@ -161,12 +196,12 @@ const LoginPage = () => {
 
                             {/* Login */}
                             <p className="text-center text-muted-foreground mt-5">
-                                Do not have an account?{" "}
+                                Already have an account?{" "}
                                 <Link
-                                    href="/signup"
+                                    href="/login"
                                     className="font-semibold text-primary"
                                 >
-                                    Sign up
+                                    Log in
                                 </Link>
                             </p>
                         </div>
@@ -177,4 +212,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default SignUpPage;

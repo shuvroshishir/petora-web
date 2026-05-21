@@ -58,7 +58,7 @@ const NavBar = () => {
                                     className={`text-foreground rounded-full px-4 py-2 text-sm font-medium transition-default
                                         ${pathname === item.href
                                             ? "bg-primary"
-                                            : "hover:bg-accent"
+                                            : "hover:bg-background"
                                         }`}
                                 >
                                     {item.name}
@@ -100,7 +100,7 @@ const NavBar = () => {
                             </Button>
                         </Link>
 
-                        <Link href="/register">
+                        <Link href="/signup">
                             <Button className="bg-gradient text-background hover:brightness-105">
                                 Get Started
                             </Button>
@@ -165,7 +165,7 @@ const NavBar = () => {
                                     </Button>
                                 </Link>
 
-                                <Link href="/register">
+                                <Link href="/signup">
                                     <Button
                                         fullWidth
                                         variant="solid"
