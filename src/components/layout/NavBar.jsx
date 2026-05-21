@@ -9,6 +9,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 import ThemeToggle from "./ThemeToggle";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { ProfileDropdown } from "./ProfileDropdown";
 
 
 const NavBar = () => {
@@ -97,26 +98,8 @@ const NavBar = () => {
                     {/* theme toggle button */}
                     <ThemeToggle />
 
-                    {/* User */}
-                    {user &&
-                        <div className="flex items-center gap-4">
-
-                            <Link href='/profile'>
-                                <Avatar className="w-9 h-9 border-3 border-primary/50">
-                                    <Avatar.Image referrerPolicy="no-referrer" alt={user?.name} src={user?.image} />
-                                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-                                </Avatar>
-                            </Link>
-
-                            <Button
-                                onClick={handleSignout}
-                                variant="outline"
-                                className="bg-gradient text-background hover:brightness-105 hidden md:inline">
-
-                                SignOut
-                            </Button>
-                        </div>
-                    }
+                    {/* User avater */}
+                    {user && <ProfileDropdown user={user} handleSignout={handleSignout} />}
 
                     {/* Mobile Menu Button */}
                     <button
@@ -199,18 +182,6 @@ const NavBar = () => {
                                 ))
                             }
 
-                            {/* mobile sign out */}
-                            {user &&
-                                <Button
-                                    fullWidth
-                                    onClick={handleSignout}
-                                    variant="outline"
-                                    className="bg-gradient text-background hover:brightness-105">
-
-                                    SignOut
-                                </Button>
-                            }
-
 
                             {/* Mobile Auth Buttons */}
                             {!user &&
@@ -242,7 +213,7 @@ const NavBar = () => {
                     </div>
                 )
             }
-        </nav>
+        </nav >
     );
 };
 
