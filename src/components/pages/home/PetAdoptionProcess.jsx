@@ -5,8 +5,56 @@ import {
     FaStethoscope,
     FaHeartCircleCheck,
 } from "react-icons/fa6";
+import { ChevronDown } from "@gravity-ui/icons";
+import { Accordion } from "@heroui/react";
+
 
 const PetAdoptionProcess = () => {
+    const categories = [
+        {
+            title: "Pet Adoption",
+            items: [
+                {
+                    title: "How can I adopt a pet from Petora?",
+                    content:
+                        "Browse available pets, open the pet details page, and submit an adoption request form. Once the owner approves your request, you can complete the adoption process.",
+                },
+                {
+                    title: "Can I cancel my adoption request?",
+                    content:
+                        "Yes. You can manage and cancel your pending adoption requests anytime from the 'My Requests' section in your dashboard.",
+                },
+            ],
+        },
+
+        {
+            title: "Pet Listings",
+            items: [
+                {
+                    title: "Can I add my own pet for adoption?",
+                    content:
+                        "Yes. Registered users can add pet listings from the dashboard by providing pet details, health status, vaccination information, images, and location.",
+                },
+                {
+                    title: "Are all pets verified before adoption?",
+                    content:
+                        "Yes. Pet owners provide detailed health and vaccination information, and every listing is reviewed to ensure a safe and trusted adoption experience.",
+                },
+            ],
+        },
+
+        {
+            title: "Support & Safety",
+            items: [
+                {
+                    title: "Is Petora free to use?",
+                    content:
+                        "Yes. Browsing pets and creating an account are completely free. Some pet owners may include an adoption fee to support pet care and medical expenses.",
+                },
+            ],
+        },
+    ];
+
     const steps = [
         {
             icon: <FaPaw size={28} />,
@@ -34,7 +82,7 @@ const PetAdoptionProcess = () => {
                 {/* Section Header */}
                 <div className="text-center">
                     <h2 className="section-title text-foreground">
-                        Simple Adoption Process
+                        How To Adopt
                     </h2>
 
                     <p className="section-description mx-auto">
@@ -71,6 +119,40 @@ const PetAdoptionProcess = () => {
                         </div>
                     ))}
                 </div>
+
+                {/* Faq */}
+                <div className="flex w-full flex-col gap-6 mt-14">
+                    <div className="flex flex-col gap-1">
+                        <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
+                        <p className="mb-4 text-lg font-medium text-muted">
+                            Everything you need to know about licensing and usage.
+                        </p>
+                    </div>
+                    {categories.map((category) => (
+                        <div key={category.title}>
+                            <p className="text-md mb-2 font-medium text-muted">{category.title}</p>
+                            <Accordion className="w-full" variant="surface">
+                                {category.items.map((item, index) => (
+                                    <Accordion.Item key={index}>
+                                        <Accordion.Heading>
+                                            <Accordion.Trigger>
+                                                {item.title}
+                                                <Accordion.Indicator>
+                                                    <ChevronDown />
+                                                </Accordion.Indicator>
+                                            </Accordion.Trigger>
+                                        </Accordion.Heading>
+                                        <Accordion.Panel>
+                                            <Accordion.Body>{item.content}</Accordion.Body>
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+                                ))}
+                            </Accordion>
+                        </div>
+                    ))}
+                </div>
+
+
             </div>
         </section>
     );

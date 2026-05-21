@@ -52,7 +52,7 @@
     }
 
     .card {
-        @apply rounded-2xl border border-primary/10 bg-background;
+        @apply rounded-2xl border border-primary/10 bg-white dark:bg-[#1f1f1f];
     }
 
     .transition-default {
