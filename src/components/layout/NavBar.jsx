@@ -5,7 +5,7 @@ import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { HiMenu, HiX } from "react-icons/hi";
 import ThemeToggle from "./ThemeToggle";
 
 const NavBar = () => {
@@ -37,8 +37,8 @@ const NavBar = () => {
                         <Image
                             src="/assets/logo.jpg"
                             alt="Logo"
-                            width={32}
-                            height={32}
+                            width={34}
+                            height={34}
                             className="rounded-full"
                         />
 
@@ -80,9 +80,9 @@ const NavBar = () => {
                     >
                         {
                             isMenuOpen ? (
-                                <X className="h-5 w-5" />
+                                <HiX className="h-5 w-5" />
                             ) : (
-                                <Menu className="h-5 w-5" />
+                                <HiMenu className="h-5 w-5" />
                             )
                         }
                     </button>
@@ -101,7 +101,7 @@ const NavBar = () => {
                         </Link>
 
                         <Link href="/register">
-                            <Button className="bg-gradient text-background hover:opacity-90">
+                            <Button className="bg-gradient text-background hover:brightness-105">
                                 Get Started
                             </Button>
                         </Link>
@@ -114,9 +114,9 @@ const NavBar = () => {
                         >
                             {
                                 isMenuOpen ? (
-                                    <X className="h-5 w-5" />
+                                    <HiX className="h-5 w-5" />
                                 ) : (
-                                    <Menu className="h-5 w-5" />
+                                    <HiMenu className="h-5 w-5" />
                                 )
                             }
                         </button>
@@ -169,7 +169,7 @@ const NavBar = () => {
                                     <Button
                                         fullWidth
                                         variant="solid"
-                                        className="bg-gradient text-background hover:bg-primary/90"
+                                        className="bg-gradient text-background hover:brightness-105"
                                     >
                                         Get Started
                                     </Button>

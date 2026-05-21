@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@heroui/react";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { LuMoon, LuSun } from "react-icons/lu";
 
 const ThemeToggle = () => {
 
@@ -42,9 +42,9 @@ const ThemeToggle = () => {
         >
             {
                 theme === "dark" ? (
-                    <Sun className="h-5 w-5  text-primary" />
+                    <LuSun className="h-5 w-5  text-primary" />
                 ) : (
-                    <Moon className="h-5 w-5" />
+                    <LuMoon className="h-5 w-5" />
                 )
             }
         </Button>

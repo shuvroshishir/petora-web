@@ -10,9 +10,9 @@
 }
 
 :root {
-    --background: #fff8ee;
+    --background: #fffbf5;
     --foreground: #2b2b2b;
-    --primary: #fda831;
+    --primary: #FFA500;
     --accent: #fff1dd;
     --muted-foreground: #6b7280;
 }
@@ -20,9 +20,9 @@
 .dark {
     --background: #262626;
     --foreground: #f5f5f5;
-    --primary: #fda831;
+    --primary: #ee9b00;
     --accent: #1a1a1a;
-    --muted-foreground: #a1a1aa;
+    --muted-foreground: #8d8d8d;
 }
 
 @layer utilities {
