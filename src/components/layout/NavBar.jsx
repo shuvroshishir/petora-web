@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { HiMenu, HiX } from "react-icons/hi";
 import ThemeToggle from "./ThemeToggle";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +25,27 @@ const NavBar = () => {
             href: "/all-pets",
         },
     ];
+
+    // user session and signout functionality
+    const { data: session } = authClient.useSession();
+    const user = session?.user;
+
+    const router = useRouter();
+    const handleSignout = async () => {
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    toast.success("Signed out successfully");
+
+                    router.push("/");
+                },
+
+                onError: () => {
+                    toast.error("Failed to sign out");
+                },
+            },
+        });
+    };
 
     return (
         <nav className="shadow-sm bg-accent/80 backdrop-blur-xl">
@@ -69,59 +93,82 @@ const NavBar = () => {
                 </ul>
 
                 {/* Right */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                     {/* theme toggle button */}
                     <ThemeToggle />
+
+                    {/* User */}
+                    {user &&
+                        <div className="flex items-center gap-4">
+
+                            <Link href='/profile'>
+                                <Avatar className="w-9 h-9 border-3 border-primary/50">
+                                    <Avatar.Image referrerPolicy="no-referrer" alt={user?.name} src={user?.image} />
+                                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                                </Avatar>
+                            </Link>
+
+                            <Button
+                                onClick={handleSignout}
+                                variant="outline"
+                                className="bg-gradient text-background hover:brightness-105 hidden md:inline">
+
+                                SignOut
+                            </Button>
+                        </div>
+                    }
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="flex items-center justify-center rounded-lg p-2 transition hover:bg-accent md:hidden"
+                        className="flex items-center justify-center rounded-lg transition hover:bg-accent md:hidden"
                     >
                         {
                             isMenuOpen ? (
-                                <HiX className="h-5 w-5" />
+                                <HiX className="h-6 w-6" />
                             ) : (
-                                <HiMenu className="h-5 w-5" />
+                                <HiMenu className="h-6 w-6" />
                             )
                         }
                     </button>
 
 
                     {/* Auth Buttons */}
-                    <div className="hidden items-center gap-3 sm:flex">
+                    {!user &&
+                        <div className="hidden items-center gap-3 sm:flex">
 
-                        <Link href="/login">
-                            <Button
-                                variant="outline"
-                                className="border-primary text-primary hover:bg-primary/10"
+                            <Link href="/login">
+                                <Button
+                                    variant="outline"
+                                    className="border-primary text-primary hover:bg-primary/10"
+                                >
+                                    Login
+                                </Button>
+                            </Link>
+
+                            <Link href="/signup">
+                                <Button className="bg-gradient text-background hover:brightness-105">
+                                    Get Started
+                                </Button>
+                            </Link>
+                            {/* Mobile Menu Button */}
+                            <button
+                                onClick={() =>
+                                    setIsMenuOpen(!isMenuOpen)
+                                }
+                                className="flex items-center justify-center rounded-lg p-2 transition hover:bg-accent md:hidden"
                             >
-                                Login
-                            </Button>
-                        </Link>
+                                {
+                                    isMenuOpen ? (
+                                        <HiX className="h-5 w-5" />
+                                    ) : (
+                                        <HiMenu className="h-5 w-5" />
+                                    )
+                                }
+                            </button>
+                        </div>
+                    }
 
-                        <Link href="/signup">
-                            <Button className="bg-gradient text-background hover:brightness-105">
-                                Get Started
-                            </Button>
-                        </Link>
-                        {/* Mobile Menu Button */}
-                        <button
-                            onClick={() =>
-                                setIsMenuOpen(!isMenuOpen)
-                            }
-                            className="flex items-center justify-center rounded-lg p-2 transition hover:bg-accent md:hidden"
-                        >
-                            {
-                                isMenuOpen ? (
-                                    <HiX className="h-5 w-5" />
-                                ) : (
-                                    <HiMenu className="h-5 w-5" />
-                                )
-                            }
-                        </button>
-
-                    </div>
                 </div>
             </div>
 
@@ -152,30 +199,45 @@ const NavBar = () => {
                                 ))
                             }
 
+                            {/* mobile sign out */}
+                            {user &&
+                                <Button
+                                    fullWidth
+                                    onClick={handleSignout}
+                                    variant="outline"
+                                    className="bg-gradient text-background hover:brightness-105">
+
+                                    SignOut
+                                </Button>
+                            }
+
+
                             {/* Mobile Auth Buttons */}
-                            <div className="flex flex-col gap-3 pt-3">
+                            {!user &&
+                                <div className="flex flex-col gap-3 pt-3">
 
-                                <Link href="/login">
-                                    <Button
-                                        fullWidth
-                                        variant="outline"
-                                        className="border-primary text-primary hover:bg-primary/10"
-                                    >
-                                        Login
-                                    </Button>
-                                </Link>
+                                    <Link href="/login">
+                                        <Button
+                                            fullWidth
+                                            variant="outline"
+                                            className="border-primary text-primary hover:bg-primary/10"
+                                        >
+                                            Login
+                                        </Button>
+                                    </Link>
 
-                                <Link href="/signup">
-                                    <Button
-                                        fullWidth
-                                        variant="solid"
-                                        className="bg-gradient text-background hover:brightness-105"
-                                    >
-                                        Get Started
-                                    </Button>
-                                </Link>
+                                    <Link href="/signup">
+                                        <Button
+                                            fullWidth
+                                            variant="solid"
+                                            className="bg-gradient text-background hover:brightness-105"
+                                        >
+                                            Get Started
+                                        </Button>
+                                    </Link>
 
-                            </div>
+                                </div>
+                            }
                         </ul>
                     </div>
                 )

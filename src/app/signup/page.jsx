@@ -11,12 +11,45 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 
 const SignUpPage = () => {
-    const onSubmit = (e) => {
+    const [password, setPassword] = useState("");
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const user = Object.fromEntries(formData.entries());
+
+        const { data, error } = await authClient.signUp.email({
+            email: user.email,
+            password: user.password,
+            name: user.name,
+            image: user.image,
+        });
+
+        if (data) {
+            toast.success("Sign Up Successful");
+            redirect("/login");
+        }
+
+        if (error) {
+            toast.error("Error: " + error.message);
+        }
     }
+
+    const handleGoogleSignin = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google"
+        })
+    }
+
+
     return (
         <section className="bg-background py-6">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8max-w-5xl">
@@ -112,6 +145,7 @@ const SignUpPage = () => {
                                     <FieldError />
                                 </TextField>
 
+                                {/* password */}
                                 <TextField
                                     isRequired
                                     minLength={8}
@@ -131,25 +165,26 @@ const SignUpPage = () => {
                                     }}
                                 >
                                     <Label>Password</Label>
-                                    <Input placeholder="Enter your password" />
+                                    <Input
+                                        placeholder="Enter your password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
                                     <FieldError />
                                 </TextField>
 
+
+                                {/* confirm password */}
                                 <TextField
                                     isRequired
                                     minLength={8}
                                     name="confirm-password"
                                     type="password"
                                     validate={(value) => {
-                                        if (value.length < 8) {
-                                            return "Password must be at least 8 characters";
+                                        if (value !== password) {
+                                            return "Passwords do not match";
                                         }
-                                        if (!/[A-Z]/.test(value)) {
-                                            return "Password must contain at least one uppercase letter";
-                                        }
-                                        if (!/[0-9]/.test(value)) {
-                                            return "Password must contain at least one number";
-                                        }
+
                                         return null;
                                     }}
                                 >
@@ -162,6 +197,7 @@ const SignUpPage = () => {
                                 <Button
                                     fullWidth
                                     size="lg"
+                                    type="submit"
                                     className="bg-gradient font-semibold text-white mt-3"
                                 >
                                     Sign Up
@@ -186,6 +222,7 @@ const SignUpPage = () => {
 
                             {/* Google Button */}
                             <Button
+                                onClick={handleGoogleSignin}
                                 fullWidth
                                 size="lg"
                                 variant="outline"

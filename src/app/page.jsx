@@ -11,9 +11,9 @@ export default function Home() {
       <Banner />
       <WhyAdoptPets />
       <PetCareTips />
-      <PetAdoptionProcess />
-      <TrustedPlatform />
       <SuccessStories />
+      <TrustedPlatform />
+      <PetAdoptionProcess />
     </div >
   );
 }

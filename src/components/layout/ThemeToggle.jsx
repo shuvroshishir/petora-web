@@ -20,7 +20,7 @@ const ThemeToggle = () => {
             <Button
                 isIconOnly
                 variant="light"
-                className="hover:bg-accent"
+                className="hover:bg-background"
             >
                 <div className="h-5 w-5" />
             </Button>
@@ -31,7 +31,7 @@ const ThemeToggle = () => {
         <Button
             isIconOnly
             variant="light"
-            className="hover:bg-accent"
+            className="hover:bg-background"
             onClick={() =>
                 setTheme(
                     theme === "dark"
