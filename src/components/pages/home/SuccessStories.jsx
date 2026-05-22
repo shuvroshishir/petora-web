@@ -50,7 +50,7 @@ const SuccessStories = () => {
                                 alt={story.name}
                                 width={500}
                                 height={300}
-                                className="h-64 w-full object-cover"
+                                className="h-64 w-full object-cover rounded-lg"
                             />
 
                             <div className="p-6">

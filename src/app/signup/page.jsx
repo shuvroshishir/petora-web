@@ -19,6 +19,7 @@ import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -116,6 +117,11 @@ const SignUpPage = () => {
                             {/* signup form */}
                             <Form
                                 onSubmit={onSubmit}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault();
+                                    }
+                                }}
                                 className="flex w-full flex-col gap-4">
                                 <TextField isRequired name="name" type="text">
                                     <Label>Name</Label>
@@ -124,7 +130,7 @@ const SignUpPage = () => {
                                 </TextField>
 
                                 <TextField name="image" type="url">
-                                    <Label>Image URL</Label>
+                                    <Label>Image URL <small className="text-muted-foreground">(Optional)</small> </Label>
                                     <Input placeholder="Enter an Image url" />
                                     <FieldError />
                                 </TextField>
@@ -189,8 +195,18 @@ const SignUpPage = () => {
                                     }}
                                 >
                                     <Label>Confirm Password</Label>
-                                    <Input placeholder="Confirm your password" />
+                                    <Input
+                                        placeholder="Confirm your password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                    />
                                     <FieldError />
+                                    {confirmPassword &&
+                                        confirmPassword === password && (
+                                            <p className="text-success text-sm">
+                                                Password Matched!
+                                            </p>
+                                        )}
                                 </TextField>
 
                                 {/* Button */}
