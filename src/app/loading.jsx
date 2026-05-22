@@ -1,5 +1,3 @@
-"use client";
-
 import { FaPaw } from "react-icons/fa6";
 
 const Loading = () => {
