@@ -1,5 +1,7 @@
 "use client";
 
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { authClient } from "@/lib/auth-client";
 import {
     Button,
     Description,
@@ -14,16 +16,40 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const AddPetPage = () => {
-    const handleAddPet = (e) => {
+    const user = useCurrentUser();
+
+    const handleAddPet = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
 
         const petData = Object.fromEntries(formData.entries());
 
-        console.log(petData);
+        const { data: tokenData } = await authClient.token();
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${tokenData?.token}`,
+                },
+                body: JSON.stringify(petData),
+            }
+        );
+
+        const result = await res.json();
+
+        if (result.insertedId) {
+            toast.success("Pet Listed successfully!");
+        } else {
+            toast.error("Failed to add Pet.");
+        }
+        e.target.reset();
+        redirect('/dashboard/my-listings')
     };
 
     return (
@@ -301,7 +327,7 @@ const AddPetPage = () => {
                                     <Label>Owner Email</Label>
 
                                     <Input
-                                        value="shuvroshishir.dev@gmail.com"
+                                        value={user?.email}
                                         readOnly
                                     />
 

@@ -1,11 +1,12 @@
+// to fix internal server error
+import dns from "node:dns/promises";
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 import { betterAuth } from "better-auth";
+import { jwt } from "better-auth/plugins"
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
-// to fix internal server error
-import dns from "node:dns/promises";
-import { jwt } from "better-auth/plugins";
-dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 const client = new MongoClient(process.env.MONGO_DB_URI);
 const db = client.db("petora");
@@ -35,7 +36,7 @@ export const auth = betterAuth({
         cookieCache: {
             enabled: true,
             strategy: "jwt",
-            maxAge: 60 * 60 * 24, // 1 day
+            maxAge: 60 * 60 * 24 * 7,
         },
     },
     plugins: [
