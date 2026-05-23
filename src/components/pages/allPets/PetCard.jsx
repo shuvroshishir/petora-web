@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import { Button } from "@heroui/react";
+
 import {
     FaLocationDot,
     FaMars,
@@ -21,60 +23,72 @@ const PetCard = ({ pet }) => {
     } = pet;
 
     return (
-        <div className="group overflow-hidden rounded-[28px] border border-primary/10 bg-white dark:bg-[#1f1f1f] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-primary/10 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 ">
 
-            {/* Image */}
+            {/* Image Section */}
             <div className="relative h-72 overflow-hidden">
 
                 <Image
                     src={image}
                     alt={petName}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    priority
+                    sizes="(max-width: 768px) 100vw,
+                    (max-width: 1280px) 50vw,
+                    33vw"
                     className="object-cover transition duration-500 group-hover:scale-110"
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
-                {/* Species */}
-                <div className="absolute left-4 top-4 rounded-full bg-background/90 px-4 py-1.5 text-sm font-semibold text-primary backdrop-blur-md">
-                    {species}
+                {/* Top Tags */}
+                <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
+
+                    {/* Species */}
+                    <div className="rounded-full bg-background/90 px-4 py-1.5 text-sm font-semibold text-primary backdrop-blur-md">
+                        {species}
+                    </div>
+
+                    {/* Gender */}
+                    <div className="flex-center h-11 w-11 rounded-full bg-background/90 text-primary backdrop-blur-md">
+                        {gender === "Male" ? (
+                            <FaMars />
+                        ) : (
+                            <FaVenus />
+                        )}
+                    </div>
+
                 </div>
 
-                {/* Gender */}
-                <div className="absolute right-4 top-4 flex-center h-11 w-11 rounded-full bg-background/90 text-primary backdrop-blur-md">
-                    {gender === "Male" ? (
-                        <FaMars />
-                    ) : (
-                        <FaVenus />
-                    )}
-                </div>
-
-                {/* Bottom Info */}
+                {/* Bottom Content */}
                 <div className="absolute bottom-0 left-0 w-full p-5">
 
                     <div className="flex items-end justify-between gap-4">
 
-                        <div>
-                            <h2 className="text-3xl font-black text-white">
+                        {/* Name */}
+                        <div className="min-w-0 flex-1">
+
+                            <h2 className="truncate text-3xl font-black text-white">
                                 {petName}
                             </h2>
 
-                            <p className="mt-1 text-sm text-white/80">
+                            <p className="mt-1 line-clamp-2 text-sm text-white/80">
                                 {breed}
                             </p>
+
                         </div>
 
-                        <div className="rounded-2xl bg-primary px-4 py-2 text-center shadow-lg">
+                        {/* Fee */}
+                        <div className="shrink-0 rounded-2xl bg-primary px-4 py-2 text-center shadow-lg">
+
                             <p className="text-xs font-medium text-white/80">
                                 Adoption Fee
                             </p>
 
-                            <h4 className="text-lg font-bold text-white">
+                            <h4 className="mt-1 text-lg font-black text-white">
                                 ${adoptionFee}
                             </h4>
+
                         </div>
 
                     </div>
@@ -84,38 +98,42 @@ const PetCard = ({ pet }) => {
             </div>
 
             {/* Content */}
-            <div className="p-5">
+            <div className="flex flex-1 flex-col p-5">
 
                 {/* Meta */}
-                <div className="flex items-center justify-between gap-4 rounded-2xl bg-accent p-4">
+                <div className="flex items-center gap-4 rounded-2xl bg-accent p-4">
 
                     {/* Age */}
-                    <div>
+                    <div className="shrink-0">
+
                         <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                             Age
                         </p>
 
-                        <h4 className="mt-1 text-lg font-bold text-foreground">
+                        <h4 className="mt-1 text-xl font-black text-foreground">
                             {age} Years
                         </h4>
+
                     </div>
 
                     {/* Divider */}
-                    <div className="h-10 w-px bg-primary/10" />
+                    <div className="h-12 w-px shrink-0 bg-primary/10" />
 
                     {/* Location */}
-                    <div className="flex-1 text-right">
+                    <div className="min-w-0 flex-1">
 
                         <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                             Location
                         </p>
 
-                        <div className="mt-1 flex items-center justify-end gap-2 text-foreground">
-                            <FaLocationDot className="text-primary" />
+                        <div className="mt-1 flex items-center gap-2">
 
-                            <span className="truncate font-semibold">
+                            <FaLocationDot className="shrink-0 text-primary" />
+
+                            <span className="truncate font-semibold text-foreground">
                                 {location}
                             </span>
+
                         </div>
 
                     </div>
@@ -125,25 +143,34 @@ const PetCard = ({ pet }) => {
                 {/* Buttons */}
                 <div className="mt-5 flex gap-3">
 
+                    {/* Details */}
                     <div className="flex-1">
-                        <Link href={`/all-pets/${_id}`}>
+
+                        <Link
+                            href={`/all-pets/${_id}`}
+                            className="block"
+                        >
                             <Button
                                 size="lg"
-                                className="bg-gradient w-full font-semibold text-white hover:brightness-105"
+                                className="bg-gradient h-12 w-full font-semibold text-white hover:brightness-105"
                             >
                                 View Details
                             </Button>
                         </Link>
+
                     </div>
 
+                    {/* Adopt */}
                     <div className="flex-1">
+
                         <Button
                             size="lg"
                             variant="outline"
-                            className="w-full border-2 border-primary/20 hover:bg-primary/10 font-semibold text-primary"
+                            className="h-12 w-full border-2 border-primary/20 font-semibold text-primary hover:bg-primary/10"
                         >
                             Adopt Now
                         </Button>
+
                     </div>
 
                 </div>
