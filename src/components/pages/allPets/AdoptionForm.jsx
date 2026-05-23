@@ -19,11 +19,35 @@ const AdoptionForm = ({ pet, user }) => {
 
         const formData = new FormData(e.currentTarget);
 
-        const adoptionData = Object.fromEntries(
+        const data = Object.fromEntries(
             formData.entries()
         );
 
-        console.log(adoptionData);
+        const adoptionData = {
+            petId: pet._id,
+
+            petName: pet.petName,
+
+            petImage: pet.image,
+
+            ownerEmail: pet.ownerEmail,
+
+            adopterName: user.name,
+
+            adopterEmail: user.email,
+
+            adopterImage: user.image,
+
+            pickupDate: new Date(data.pickupDate),
+
+            message: data.message,
+
+            status: "pending",
+
+            createdAt: new Date(),
+        };
+
+        console.log('adoptionData', adoptionData);
     };
 
 

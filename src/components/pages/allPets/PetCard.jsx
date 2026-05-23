@@ -162,15 +162,17 @@ const PetCard = ({ pet }) => {
 
                     {/* Adopt */}
                     <div className="flex-1">
-
-                        <Button
-                            size="lg"
-                            variant="outline"
-                            className="h-12 w-full border-2 border-primary/20 font-semibold text-primary hover:bg-primary/10"
+                        <Link
+                            href={`/all-pets/${_id}`}
                         >
-                            Adopt Now
-                        </Button>
-
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="h-12 w-full border-2 border-primary/20 font-semibold text-primary hover:bg-primary/10"
+                            >
+                                Adopt Now
+                            </Button>
+                        </Link>
                     </div>
 
                 </div>

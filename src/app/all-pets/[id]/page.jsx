@@ -16,6 +16,7 @@ import { getCurrentUser } from "@/utils/getCurrentUser";
 import { PiHeartbeatFill } from "react-icons/pi";
 import Link from "next/link";
 import { Button } from "@heroui/react";
+import NoAdoptionCard from "@/components/pages/allPets/NoAdoptionCard";
 
 const PetDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -23,6 +24,8 @@ const PetDetailsPage = async ({ params }) => {
     const pet = await getSinglePet(id);
 
     const user = await getCurrentUser();
+
+    // console.log({ pet, user })
 
     return (
         <section className="section">
@@ -239,10 +242,15 @@ const PetDetailsPage = async ({ params }) => {
                     {/* Right */}
                     <div className="xl:sticky xl:top-28 xl:h-fit">
 
-                        <AdoptionForm
-                            pet={pet}
-                            user={user}
-                        />
+                        {
+                            pet.ownerEmail === user.email ?
+                                <NoAdoptionCard />
+                                :
+                                <AdoptionForm
+                                    pet={pet}
+                                    user={user}
+                                />
+                        }
 
                     </div>
 
