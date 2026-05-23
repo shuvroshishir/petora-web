@@ -10,7 +10,7 @@ export const getSinglePet = async (id) => {
 
     // console.log("Token from client side:", token);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets/${id}`, {
         cache: "no-store",
         headers:
         {

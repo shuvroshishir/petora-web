@@ -17,12 +17,17 @@ const PetAdoptionProcess = () => {
                 {
                     title: "How can I adopt a pet from Petora?",
                     content:
-                        "Browse available pets, open the pet details page, and submit an adoption request form. Once the owner approves your request, you can complete the adoption process.",
+                        "Adopting a pet from Petora is simple and secure. First, browse available pets and choose the one that matches your lifestyle and preferences. Open the pet details page to view important information such as breed, age, vaccination status, health condition, and location. Then, submit an adoption request form with your contact information and adoption details. Once the pet owner reviews and approves your request, both parties can communicate and complete the adoption process safely.",
                 },
                 {
-                    title: "Can I cancel my adoption request?",
+                    title: "Can I cancel my adoption request after submitting it?",
                     content:
-                        "Yes. You can manage and cancel your pending adoption requests anytime from the 'My Requests' section in your dashboard.",
+                        "Yes. You can easily manage all your adoption requests from the 'My Requests' section in your dashboard. If your request is still pending and has not been approved by the pet owner, you can cancel it anytime. Once cancelled, the pet owner will be notified automatically, and the request will be removed from your active requests list.",
+                },
+                {
+                    title: "How do I know if a pet is still available for adoption?",
+                    content:
+                        "Each pet listing on Petora displays its current adoption status in real time. If a pet is already adopted or unavailable, the listing will clearly indicate it. You can also check the latest activity on the pet details page to ensure the pet is still accepting adoption requests.",
                 },
             ],
         },
@@ -33,12 +38,17 @@ const PetAdoptionProcess = () => {
                 {
                     title: "Can I add my own pet for adoption?",
                     content:
-                        "Yes. Registered users can add pet listings from the dashboard by providing pet details, health status, vaccination information, images, and location.",
+                        "Yes. Registered users can create and manage pet listings directly from their dashboard. While adding a pet, you can provide detailed information including pet name, species, breed, age, gender, vaccination status, health condition, adoption fee, location, and pet images. Providing accurate and complete information helps adopters make informed decisions and increases the chances of finding a loving home quickly.",
                 },
                 {
                     title: "Are all pets verified before adoption?",
                     content:
-                        "Yes. Pet owners provide detailed health and vaccination information, and every listing is reviewed to ensure a safe and trusted adoption experience.",
+                        "Petora encourages responsible and transparent pet adoption. Every pet listing is reviewed before being published to ensure that important information such as health condition, vaccination details, and ownership information is properly provided. While we strive to maintain a trusted platform, adopters are also encouraged to communicate directly with pet owners before finalizing the adoption.",
+                },
+                {
+                    title: "Can I edit or remove my pet listing later?",
+                    content:
+                        "Yes. You have full control over your pet listings. From your dashboard, you can update pet information, upload new images, change adoption status, or remove the listing entirely whenever needed. This ensures your pet information always stays accurate and up to date.",
                 },
             ],
         },
@@ -49,7 +59,17 @@ const PetAdoptionProcess = () => {
                 {
                     title: "Is Petora free to use?",
                     content:
-                        "Yes. Browsing pets and creating an account are completely free. Some pet owners may include an adoption fee to support pet care and medical expenses.",
+                        "Yes. Creating an account, browsing pets, and submitting adoption requests are completely free on Petora. However, some pet owners may request a small adoption fee to help cover vaccination, medical care, food, or other pet-related expenses. Any adoption fee will always be clearly mentioned in the pet listing.",
+                },
+                {
+                    title: "How does Petora ensure a safe adoption experience?",
+                    content:
+                        "Petora focuses on creating a safe, trusted, and transparent adoption environment for both adopters and pet owners. We encourage users to provide accurate pet information, maintain respectful communication, and verify important details before completing an adoption. Users can also report suspicious activity or inappropriate listings directly through the platform for review.",
+                },
+                {
+                    title: "What should I do if I face a problem during the adoption process?",
+                    content:
+                        "If you experience any issue while using Petora, you can contact our support team through the contact page or support section. Whether it is related to adoption requests, pet listings, communication issues, or account problems, our team will review the situation and provide assistance as quickly as possible.",
                 },
             ],
         },

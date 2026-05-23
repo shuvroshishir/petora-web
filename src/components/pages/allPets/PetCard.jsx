@@ -23,7 +23,7 @@ const PetCard = ({ pet }) => {
     } = pet;
 
     return (
-        <div className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-primary/10 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 ">
+        <div className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-primary/10 bg-white dark:bg-[#1f1f1f] shadow-sm transition-all duration-300 hover:-translate-y-1 ">
 
             {/* Image Section */}
             <div className="relative h-72 overflow-hidden">
