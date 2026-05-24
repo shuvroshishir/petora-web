@@ -1,5 +1,6 @@
 "use client"
 
+import { authClient } from "@/lib/auth-client";
 import {
     Button,
     DateInput,
@@ -12,9 +13,12 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const AdoptionForm = ({ pet, user }) => {
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
@@ -47,7 +51,27 @@ const AdoptionForm = ({ pet, user }) => {
             createdAt: new Date(),
         };
 
-        console.log('adoptionData', adoptionData);
+        const { data: tokenData } = await authClient.token();
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${tokenData?.token}`,
+                },
+                body: JSON.stringify(adoptionData),
+            }
+        );
+
+        const result = await res.json();
+
+        if (result.insertedId) {
+            toast.success("Adoption request sent successfully!");
+        } else {
+            toast.error("Failed to send adoption request");
+        }
+        e.target.reset();
+        redirect('/dashboard/my-requests')
     };
 
 
