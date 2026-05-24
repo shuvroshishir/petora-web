@@ -57,6 +57,9 @@ const AddPetPage = () => {
 
             {/* Header */}
             <div>
+                <div className="inline-flex rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary mb-4">
+                    Dashboard
+                </div>
                 <h1 className="text-3xl font-black text-foreground sm:text-4xl">
                     Add a Pet Listing
                 </h1>
