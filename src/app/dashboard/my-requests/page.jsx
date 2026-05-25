@@ -13,6 +13,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import NoRequests from "@/components/pages/dashboard/my-requests/NoRequests";
 import { getMyRequests } from "@/actions/getMyRequests";
 import { formatDate } from "@/utils/formatDate";
+import DeleteRequestAlert from "@/components/pages/dashboard/my-requests/DeleteRequestAlert";
 
 const MyRequestsPage = async () => {
 
@@ -237,16 +238,14 @@ const MyRequestsPage = async () => {
                                     </div>
 
                                     {/* Buttons */}
-                                    <div className="mt-5 grid grid-cols-2 gap-3">
+                                    <div className="mt-5 flex gap-3">
 
                                         <Link
                                             href={`/all-pets/${request.petId}`}
-                                            className="w-full"
                                         >
                                             <Button
-                                                size="lg"
                                                 variant="outline"
-                                                className="w-full font-semibold"
+                                                className="border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10"
                                             >
                                                 <FaEye />
 
@@ -254,15 +253,7 @@ const MyRequestsPage = async () => {
                                             </Button>
                                         </Link>
 
-                                        <Button
-                                            size="lg"
-                                            variant="outline"
-                                            className="w-full border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10"
-                                        >
-                                            <FaTrash />
-
-                                            Cancel
-                                        </Button>
+                                        <DeleteRequestAlert id={request._id} petName={request.petName} />
 
                                     </div>
 
@@ -390,7 +381,6 @@ const MyRequestsPage = async () => {
                                                             href={`/all-pets/${request.petId}`}
                                                         >
                                                             <Button
-                                                                size="sm"
                                                                 variant="outline"
                                                                 className="border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10"
                                                             >
@@ -400,15 +390,7 @@ const MyRequestsPage = async () => {
                                                             </Button>
                                                         </Link>
 
-                                                        <Button
-                                                            size="sm"
-                                                            variant="outline"
-                                                            className="border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10"
-                                                        >
-                                                            <FaTrash />
-
-                                                            Cancel
-                                                        </Button>
+                                                        <DeleteRequestAlert id={request._id} petName={request.petName} />
 
                                                     </div>
 

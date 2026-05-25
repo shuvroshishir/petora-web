@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaTrash } from "react-icons/fa6";
 
-const DeletePetAlert = ({ pet }) => {
-    const { _id, petName } = pet;
+const DeleteRequestAlert = ({ id, petName }) => {
     const router = useRouter();
 
     const handleDelete = async () => {
@@ -17,7 +16,7 @@ const DeletePetAlert = ({ pet }) => {
 
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_SERVER_URL}/pets/${_id}`,
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/${id}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -30,10 +29,10 @@ const DeletePetAlert = ({ pet }) => {
             const data = await res.json();
 
             if (data.deletedCount > 0) {
-                toast.success("Pet listing deleted successfully!");
+                toast.success("Request deleted successfully!");
                 router.refresh();
             } else {
-                toast.error("Failed to delete this pet listing");
+                toast.error("Failed to delete this Request");
             }
         } catch (error) {
             console.log(error);
@@ -45,13 +44,12 @@ const DeletePetAlert = ({ pet }) => {
     return (
         <AlertDialog>
             <Button
-                size="lg"
-                className=" w-full border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10"
                 variant="outline"
+                className="border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10"
             >
                 <FaTrash />
 
-                Delete
+                Cancel
             </Button>
             <AlertDialog.Backdrop>
                 <AlertDialog.Container>
@@ -60,21 +58,21 @@ const DeletePetAlert = ({ pet }) => {
                         <AlertDialog.Header>
                             <AlertDialog.Icon status="warning" />
                             <AlertDialog.Heading>
-                                Are you sure to Delete Pet Permanently?
+                                Are you sure want to Cancel?
                             </AlertDialog.Heading>
                         </AlertDialog.Header>
                         <AlertDialog.Body>
                             <p>
-                                This will permanently delete <strong className="text-primary">{petName}</strong>{" "}
+                                This will permanently cancel the request of <strong className="text-primary">{petName}</strong>{" "}
                                 and all of its data. This action cannot be undone.
                             </p>
                         </AlertDialog.Body>
                         <AlertDialog.Footer>
                             <Button slot="close" variant="tertiary">
-                                Cancel
+                                No
                             </Button>
                             <Button onClick={handleDelete} slot="close" variant="danger">
-                                Delete
+                                Yes
                             </Button>
                         </AlertDialog.Footer>
                     </AlertDialog.Dialog>
@@ -84,4 +82,4 @@ const DeletePetAlert = ({ pet }) => {
     );
 };
 
-export default DeletePetAlert;
+export default DeleteRequestAlert;
