@@ -13,10 +13,11 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const AdoptionForm = ({ pet, user }) => {
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -66,12 +67,12 @@ const AdoptionForm = ({ pet, user }) => {
         const result = await res.json();
 
         if (result.insertedId) {
+            e.target.reset();
+            router.refresh();
             toast.success("Adoption request sent successfully!");
         } else {
             toast.error("Failed to send adoption request");
         }
-        e.target.reset();
-        redirect('/dashboard/my-requests')
     };
 
 

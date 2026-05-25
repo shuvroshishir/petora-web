@@ -5,6 +5,7 @@ import { FaClipboardList, FaPaw, FaPlus } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
 import ListingCard from "@/components/pages/dashboard/my-listings/ListingCard";
 import { getMyListings } from "@/actions/getMyListings";
+import NoListing from "@/components/pages/dashboard/my-listings/NoListing";
 
 
 const MyListingsPage = async () => {
@@ -136,34 +137,7 @@ const MyListingsPage = async () => {
                             {pets.map(pet => <ListingCard key={pet._id} pet={pet} />)}
                         </div>
                     ) : (
-                        <div className="flex min-h-[60vh] items-center justify-center">
-                            <div className="text-center">
-
-                                <div className="bg-warning/10 text-warning mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full text-4xl">
-                                    🐾
-                                </div>
-
-                                <h2 className="mb-3 text-3xl font-bold">
-                                    No Listings Found
-                                </h2>
-
-                                <p className="text-default-500 mb-6">
-                                    You have not added any pets yet. Start adding your furry friends for adoption.
-                                </p>
-
-                                <Link href="/dashboard/add-pet">
-
-                                    <Button
-                                        size="lg"
-                                        className="bg-gradient h-12 px-6 font-semibold text-white"
-                                    >
-                                        <FaPlus /> Add your first listing
-                                    </Button>
-
-                                </Link>
-
-                            </div>
-                        </div>
+                        <NoListing />
                     )
             }
 

@@ -17,6 +17,7 @@ import { PiHeartbeatFill } from "react-icons/pi";
 import Link from "next/link";
 import { Button } from "@heroui/react";
 import NoAdoptionCard from "@/components/pages/allPets/NoAdoptionCard";
+import AlreadyRequestedCard from "@/components/pages/allPets/AlreadyRequestedCard";
 
 const PetDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -25,7 +26,10 @@ const PetDetailsPage = async ({ params }) => {
 
     const user = await getCurrentUser();
 
-    // console.log({ pet, user })
+    const existingRequestRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/existing?petId=${pet._id}&email=${user.email}`,
+        { cache: "no-store" }
+    );
+    const existingRequest = await existingRequestRes.json();
 
     return (
         <section className="section">
@@ -246,10 +250,13 @@ const PetDetailsPage = async ({ params }) => {
                             pet.ownerEmail === user.email ?
                                 <NoAdoptionCard />
                                 :
-                                <AdoptionForm
-                                    pet={pet}
-                                    user={user}
-                                />
+                                existingRequest ?
+                                    <AlreadyRequestedCard />
+                                    :
+                                    < AdoptionForm
+                                        pet={pet}
+                                        user={user}
+                                    />
                         }
 
                     </div>

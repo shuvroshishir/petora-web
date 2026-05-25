@@ -9,6 +9,8 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { image } from "framer-motion/client";
 import { EditProfileModal } from "@/components/pages/dashboard/EditProfileModal";
+import { getMyListings } from "@/actions/getMyListings";
+import { getMyRequests } from "@/actions/getMyRequests";
 
 const ProfilePage = async () => {
     const session = await auth.api.getSession({
@@ -17,6 +19,8 @@ const ProfilePage = async () => {
     const user = session?.user;
     const { name, email, image } = user
 
+    const pets = await getMyListings();
+    const requests = await getMyRequests()
 
     return (
         <section className="p-4 sm:p-6">
@@ -124,7 +128,7 @@ const ProfilePage = async () => {
                                     </p>
 
                                     <h3 className="mt-1 text-3xl font-black text-foreground">
-                                        12
+                                        {requests?.length}
                                     </h3>
                                 </div>
 
@@ -145,7 +149,7 @@ const ProfilePage = async () => {
                                     </p>
 
                                     <h3 className="mt-1 text-3xl font-black text-foreground">
-                                        5
+                                        {pets?.length}
                                     </h3>
                                 </div>
 
@@ -166,7 +170,7 @@ const ProfilePage = async () => {
                                     </p>
 
                                     <h3 className="mt-1 text-3xl font-black text-foreground">
-                                        3
+                                        0
                                     </h3>
                                 </div>
 

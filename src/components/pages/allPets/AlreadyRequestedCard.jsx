@@ -3,8 +3,10 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 
 import {
+    FaArrowRight,
     FaCheck,
     FaClock,
+    FaPaw,
 } from "react-icons/fa6";
 
 const AlreadyRequestedCard = () => {
@@ -12,7 +14,7 @@ const AlreadyRequestedCard = () => {
         <div className="rounded-4xl border border-primary/10 bg-background p-8 shadow-sm">
 
             {/* Icon */}
-            <div className="flex-center mx-auto h-20 w-20 rounded-full bg-primary/10 text-3xl text-primary">
+            <div className="flex-center mx-auto h-20 w-20 rounded-full bg-success/10 text-3xl text-success">
                 <FaCheck />
             </div>
 
@@ -31,12 +33,6 @@ const AlreadyRequestedCard = () => {
                     Adoption Request Sent
                 </h2>
 
-                <p className="mt-4 leading-8 text-muted-foreground">
-                    Your adoption request for this pet has
-                    already been submitted. Please wait for
-                    the owner to review your request.
-                </p>
-
             </div>
 
             {/* Info */}
@@ -45,7 +41,7 @@ const AlreadyRequestedCard = () => {
                 <div className="flex items-start gap-4">
 
                     <div className="flex-center h-12 w-12 shrink-0 rounded-2xl bg-primary/10 text-primary">
-                        🐾
+                        <FaPaw />
                     </div>
 
                     <div>
@@ -76,9 +72,10 @@ const AlreadyRequestedCard = () => {
                 >
                     <Button
                         size="lg"
-                        className="bg-gradient h-12 w-full font-semibold text-white"
+                        className="bg-gradient h-12 w-full font-semibold text-white  hover:brightness-105 hover:scale-105 transition-default"
                     >
-                        My Requests
+                        Go To My Requests
+                        <FaArrowRight />
                     </Button>
                 </Link>
                 {/* 

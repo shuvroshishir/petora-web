@@ -1,5 +1,7 @@
+import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
+import { FaArrowRight, FaPaw } from 'react-icons/fa6';
 import { RiErrorWarningLine } from 'react-icons/ri';
 
 const NoAdoptionCard = () => {
@@ -8,7 +10,7 @@ const NoAdoptionCard = () => {
 
             {/* Icon */}
             <div className="flex-center mx-auto h-20 w-20 rounded-full bg-primary/10 text-4xl text-primary">
-                🐾
+                <FaPaw />
             </div>
 
             {/* Content */}
@@ -22,16 +24,10 @@ const NoAdoptionCard = () => {
                     You Can’t Adopt Your Own Pet
                 </h2>
 
-                <p className="mt-4 leading-8 text-muted-foreground">
-                    This pet was listed by you. Adoption requests
-                    are only available for other users to ensure
-                    a fair and proper adoption process.
-                </p>
-
             </div>
 
             {/* Extra Info */}
-            <div className="mt-8 rounded-2xl border border-primary/10 bg-accent p-5">
+            <div className="my-8 rounded-2xl border border-primary/10 bg-accent p-5">
 
                 <div className="flex items-start gap-4">
 
@@ -40,11 +36,9 @@ const NoAdoptionCard = () => {
                     </div>
 
                     <div>
-                        <Link href={'/dashboard/my-listings'}>
-                            <h4 className="font-bold text-foreground">
-                                Manage This Listing
-                            </h4>
-                        </Link>
+                        <h4 className="font-bold text-foreground">
+                            Manage This Listing
+                        </h4>
 
                         <p className="mt-2 text-sm leading-7 text-muted-foreground">
                             You can edit, update, or manage adoption
@@ -53,9 +47,22 @@ const NoAdoptionCard = () => {
 
                     </div>
 
+
                 </div>
 
             </div>
+            <Link
+                href="/dashboard/my-listings"
+                className="flex-1"
+            >
+                <Button
+                    size="lg"
+                    className="bg-gradient h-12 w-full font-semibold text-white hover:brightness-105 hover:scale-105 transition-default"
+                >
+                    Go To My Listings
+                    <FaArrowRight />
+                </Button>
+            </Link>
 
         </div>
     );
