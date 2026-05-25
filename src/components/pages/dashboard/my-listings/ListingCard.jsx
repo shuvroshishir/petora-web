@@ -3,7 +3,9 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaClipboardList, FaEye, FaPenToSquare, FaTrash } from "react-icons/fa6";
+import { FaClipboardList, FaEye } from "react-icons/fa6";
+import { EditPetModal } from "./EditPetModal";
+import DeletePetAlert from "./DeletePetAlert";
 
 
 const ListingCard = ({ pet }) => {
@@ -106,16 +108,7 @@ const ListingCard = ({ pet }) => {
                     </Link>
 
                     {/* Edit */}
-                    <Button
-                        size="lg"
-                        className="w-full border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10"
-
-                        variant="outline"
-                    >
-                        <FaPenToSquare />
-
-                        Edit
-                    </Button>
+                    <EditPetModal pet={pet} />
 
                     {/* Requests */}
                     <Button
@@ -129,15 +122,7 @@ const ListingCard = ({ pet }) => {
                     </Button>
 
                     {/* Delete */}
-                    <Button
-                        size="lg"
-                        className=" w-full border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10"
-                        variant="outline"
-                    >
-                        <FaTrash />
-
-                        Delete
-                    </Button>
+                    <DeletePetAlert pet={pet} />
 
                 </div>
 

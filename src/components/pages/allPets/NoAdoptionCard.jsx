@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { RiErrorWarningLine } from 'react-icons/ri';
 
@@ -39,10 +40,11 @@ const NoAdoptionCard = () => {
                     </div>
 
                     <div>
-
-                        <h4 className="font-bold text-foreground">
-                            Manage This Listing
-                        </h4>
+                        <Link href={'/dashboard/my-listings'}>
+                            <h4 className="font-bold text-foreground">
+                                Manage This Listing
+                            </h4>
+                        </Link>
 
                         <p className="mt-2 text-sm leading-7 text-muted-foreground">
                             You can edit, update, or manage adoption

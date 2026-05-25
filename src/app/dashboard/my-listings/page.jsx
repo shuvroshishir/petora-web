@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Button } from "@heroui/react";
-import { FaClipboardList, FaPaw } from "react-icons/fa6";
+import { FaClipboardList, FaPaw, FaPlus } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
 import ListingCard from "@/components/pages/dashboard/my-listings/ListingCard";
 import { getMyListings } from "@/actions/getMyListings";
@@ -41,7 +41,7 @@ const MyListingsPage = async () => {
                         size="lg"
                         className="bg-gradient h-12 px-6 font-semibold text-white"
                     >
-                        + Add New Pet
+                        <FaPlus /> Add New Pet
                     </Button>
 
                 </Link>
@@ -63,7 +63,7 @@ const MyListingsPage = async () => {
                             </p>
 
                             <h2 className="mt-3 text-4xl font-black text-foreground">
-                                {pets.length}
+                                {pets?.length}
                             </h2>
 
                         </div>
@@ -129,13 +129,45 @@ const MyListingsPage = async () => {
             </div>
 
             {/* Listings cards */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {
+                Array.isArray(pets) && pets.length > 0 ?
+                    (
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                            {pets.map(pet => <ListingCard key={pet._id} pet={pet} />)}
+                        </div>
+                    ) : (
+                        <div className="flex min-h-[60vh] items-center justify-center">
+                            <div className="text-center">
 
-                {
-                    pets.map(pet => <ListingCard key={pet._id} pet={pet} />)
-                }
+                                <div className="bg-warning/10 text-warning mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full text-4xl">
+                                    🐾
+                                </div>
 
-            </div>
+                                <h2 className="mb-3 text-3xl font-bold">
+                                    No Listings Found
+                                </h2>
+
+                                <p className="text-default-500 mb-6">
+                                    You have not added any pets yet. Start adding your furry friends for adoption.
+                                </p>
+
+                                <Link href="/dashboard/add-pet">
+
+                                    <Button
+                                        size="lg"
+                                        className="bg-gradient h-12 px-6 font-semibold text-white"
+                                    >
+                                        <FaPlus /> Add your first listing
+                                    </Button>
+
+                                </Link>
+
+                            </div>
+                        </div>
+                    )
+            }
+
+
 
         </section>
     );
