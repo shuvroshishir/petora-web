@@ -1,6 +1,7 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
+import { FaPaw } from 'react-icons/fa6';
 
 const NoPetsFound = () => {
     return (
@@ -8,7 +9,7 @@ const NoPetsFound = () => {
 
             {/* Icon */}
             <div className="flex-center mb-5 h-20 w-20 rounded-full bg-primary/10 text-4xl text-primary">
-                🐾
+                <FaPaw />
             </div>
 
             {/* Title */}

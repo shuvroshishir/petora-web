@@ -39,6 +39,7 @@ Petora is a modern pet adoption platform where users can explore pets, send adop
 - @gravityui/icons
 - react-icons
 - react-hot-toast
+- mongodb
 - better-auth
 - better-auth/mongo-adapter
 - tailwindcss
@@ -50,8 +51,7 @@ Petora is a modern pet adoption platform where users can explore pets, send adop
 - mongodb
 - cors
 - dotenv
-- jsonwebtoken
-- cookie-parser
+- jose-cjs
 
 ---
 
