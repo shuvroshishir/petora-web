@@ -30,10 +30,14 @@ const AddPetPage = () => {
         const petData = {
             ...Object.fromEntries(formData.entries()),
 
+            age: Number(formData.get("age")),
+
+            adoptionFee: Number(formData.get("adoptionFee")),
+
             adoptionStatus: "available",
 
-            createdAt: new Date()
-        }
+            createdAt: new Date(),
+        };
 
         const { data: tokenData } = await authClient.token();
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`,
