@@ -60,7 +60,6 @@ export function EditPetModal({ pet }) {
                 toast.error("Failed to update pet.");
             }
         } catch (error) {
-            console.log(error);
             toast.error("Something went wrong!");
         }
     };

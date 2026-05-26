@@ -75,12 +75,12 @@ export function RequestModal({ pet, requests, }) {
 
 
                             {
-                                requests.length === 0 ?
+                                requests?.length === 0 ?
                                     <NoRequestsCard />
                                     :
                                     <Surface className="space-y-5  bg-background">
                                         {
-                                            requests.map(request => <RequestCard key={request._id} request={request} />)
+                                            requests?.map(request => <RequestCard key={request?._id} request={request} />)
                                         }
                                     </Surface>
                             }

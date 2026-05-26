@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa6";
 
 import { Button } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 
 
@@ -19,13 +20,19 @@ import { Button } from "@heroui/react";
 const RequestCard = ({ request }) => {
     const router = useRouter();
 
-    // approve request
-    const handleApprove = async () => {
+    const handleApprove = async (id) => {
+
+        const { data: tokenData } = await authClient.token();
+
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/adoptions/approve/${request}`,
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/approve/${id}`,
                 {
                     method: "PATCH",
-                    credentials: "include",
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${tokenData?.token}`,
+                    },
                 }
             );
 
@@ -34,39 +41,42 @@ const RequestCard = ({ request }) => {
             if (data.success) {
                 toast.success("Adoption request approved");
                 router.refresh();
+            } else {
+                toast.error("Failed to approve")
             }
+
         } catch (error) {
             toast.error("Something went wrong");
         }
     };
 
-    // reject request
-    const handleReject = async () => {
+    const handleReject = async (id) => {
+
+        const { data: tokenData } = await authClient.token();
+
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/adoptions/reject/${request._id}`,
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/reject/${id}`,
                 {
                     method: "PATCH",
-                    credentials: "include",
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${tokenData?.token}`,
+                    },
                 }
             );
 
-            const data =
-                await res.json();
+            const data = await res.json();
 
             if (data.modifiedCount > 0) {
-                toast.success(
-                    "Request rejected"
-                );
-
+                toast.success("Request rejected");
                 router.refresh();
             }
+
         } catch (error) {
-            toast.error(
-                "Something went wrong"
-            );
+            toast.error("Something went wrong");
         }
     };
-
 
     return (
         <div className="overflow-hidden rounded-4xl border border-primary/10 bg-accent p-4 sm:p-5">
@@ -167,18 +177,17 @@ const RequestCard = ({ request }) => {
                             {/* Approve */}
                             <Button
                                 onPress={() => handleApprove(request._id)}
-                                className=" bg-gradient hover:brightness-110 font-semibold text-white sm:min-w-[160px]"
+                                className=" bg-gradient hover:brightness-110 font-semibold text-white sm:min-w-40"
                             >
                                 <FaCheck />
-
                                 Approve
                             </Button>
 
                             {/* Reject */}
                             <Button
-                                variant="outline"
                                 onPress={() => handleReject(request._id)}
-                                className="border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10 sm:min-w-[160px]"
+                                variant="outline"
+                                className="border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10 sm:min-w-40"
                             >
                                 <FaXmark />
 
