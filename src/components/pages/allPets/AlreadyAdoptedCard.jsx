@@ -3,12 +3,10 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 
 import {
-    FaArrowRight,
-    FaCheck,
-    FaClock,
+    FaArrowLeft,
     FaPaw,
 } from "react-icons/fa6";
-import DeleteRequestAlert from "../dashboard/my-requests/DeleteRequestAlert";
+import { FaHome } from "react-icons/fa";
 
 const AlreadyRequestedCard = () => {
     return (
@@ -16,23 +14,22 @@ const AlreadyRequestedCard = () => {
 
             {/* Icon */}
             <div className="flex-center mx-auto h-20 w-20 rounded-full bg-success/10 text-3xl text-success">
-                <FaCheck />
+                <FaHome />
             </div>
 
             {/* Content */}
             <div className="mt-6 text-center">
 
-                <div className="inline-flex items-center gap-2 rounded-full bg-yellow-500/10 px-4 py-1 text-sm font-semibold text-yellow-600 dark:text-yellow-400">
-
-                    <FaClock className="text-xs" />
-
-                    Status: Pending
-
-                </div>
-
                 <h2 className="mt-5 text-3xl font-black text-foreground">
-                    Adoption Request Sent
+                    Already Adopted
                 </h2>
+
+                <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
+                    Great news! This lovely pet has
+                    already been adopted by a caring
+                    family. Thank you for your interest
+                    in adoption.
+                </p>
 
             </div>
 
@@ -48,14 +45,14 @@ const AlreadyRequestedCard = () => {
                     <div>
 
                         <h4 className="font-bold text-foreground">
-                            What Happens Next?
+                            Want to Adopt Another Pet?
                         </h4>
 
                         <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                            The pet owner will review your
-                            request and approve or reject it.
-                            You can monitor the status from
-                            your requests dashboard.
+                            Explore more adorable pets
+                            waiting for loving homes.
+                            Your perfect furry companion
+                            may still be waiting for you.
                         </p>
 
                     </div>
@@ -65,21 +62,21 @@ const AlreadyRequestedCard = () => {
             </div>
 
             {/* Buttons */}
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
 
                 <Link
-                    href="/dashboard/my-requests"
+                    href="/all-pets"
                     className="flex-1"
                 >
                     <Button
-                        className="bg-gradient w-full font-semibold text-white  hover:brightness-110"
+                        size="lg"
+                        className="bg-gradient h-12 w-full font-semibold text-white  hover:brightness-105 hover:scale-105 transition-default"
                     >
-                        My Requests
-                        <FaArrowRight />
+                        <FaArrowLeft />
+                        Browse More Pets
                     </Button>
                 </Link>
 
-                <DeleteRequestAlert />
             </div>
 
         </div>

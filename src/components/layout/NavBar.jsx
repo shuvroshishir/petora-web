@@ -57,7 +57,7 @@ const NavBar = () => {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-1 "
                     >
                         <Image
                             src="/assets/logo.jpg"
@@ -67,7 +67,7 @@ const NavBar = () => {
                             className="rounded-full"
                         />
 
-                        <span className="text-xl font-bold">
+                        <span className="text-xl font-bold ">
                             Petora
                         </span>
                     </Link>
@@ -83,7 +83,7 @@ const NavBar = () => {
                                     className={`text-foreground rounded-full px-4 py-2 text-sm font-medium transition-default
                                         ${pathname === item.href
                                             ? "bg-primary"
-                                            : "hover:bg-background"
+                                            : "hover:bg-primary/30"
                                         }`}
                                 >
                                     {item.name}

@@ -19,19 +19,19 @@ const MyRequestsPage = async () => {
 
     const requests = await getMyRequests();
 
-    const pendingRequests = requests.filter(
+    const pendingRequests = requests?.filter(
         (request) =>
-            request.status === "pending"
+            request?.status === "pending"
     ).length;
 
-    const approvedRequests = requests.filter(
+    const approvedRequests = requests?.filter(
         (request) =>
-            request.status === "approved"
+            request?.status === "approved"
     ).length;
 
-    const rejectedRequests = requests.filter(
+    const rejectedRequests = requests?.filter(
         (request) =>
-            request.status === "rejected"
+            request?.status === "rejected"
     ).length;
 
     return (
@@ -242,10 +242,11 @@ const MyRequestsPage = async () => {
 
                                         <Link
                                             href={`/all-pets/${request.petId}`}
+                                            className="flex-1"
                                         >
                                             <Button
                                                 variant="outline"
-                                                className="border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10"
+                                                className="border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10 w-full"
                                             >
                                                 <FaEye />
 
@@ -379,10 +380,11 @@ const MyRequestsPage = async () => {
 
                                                         <Link
                                                             href={`/all-pets/${request.petId}`}
+                                                            className="flex-1"
                                                         >
                                                             <Button
                                                                 variant="outline"
-                                                                className="border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10"
+                                                                className="border-blue-500/20 font-semibold text-blue-500 hover:bg-blue-500/10 w-full"
                                                             >
                                                                 <FaEye />
 

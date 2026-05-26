@@ -1,14 +1,24 @@
-"use client"
-
-import { Button } from "@heroui/react";
 import Image from "next/image";
-import Link from "next/link";
-import { FaClipboardList, FaEye } from "react-icons/fa6";
-import { EditPetModal } from "./EditPetModal";
-import DeletePetAlert from "./DeletePetAlert";
+import ListingCardButtons from "./ListingCardButtons";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
+const ListingCard = async ({ pet }) => {
+    // get all request for this pet
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    });
 
-const ListingCard = ({ pet }) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptions/pet/${pet._id}`, {
+        cache: "no-store",
+        headers:
+        {
+            authorization: `Bearer ${token}`,
+        },
+    });
+
+    const requests = await res.json();
+
     return (
         <div className="rounded-2xl border border-primary/10 bg-white dark:bg-[#1f1f1f] shadow overflow-hidden transition-default hover:-translate-y-1 hover:shadow-xl">
 
@@ -27,7 +37,10 @@ const ListingCard = ({ pet }) => {
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
 
                 {/* Status */}
-                <div className="absolute right-4 top-4 rounded-full bg-background px-4 py-2 text-sm font-semibold text-primary shadow-lg">
+                <div className={`absolute right-4 top-4 rounded-full  px-4 py-2 text-sm font-semibold  shadow-lg
+                    ${pet.adoptionStatus === "available" ?
+                        "bg-background text-primary" : "bg-green-100 dark:bg-[#262626] text-success"
+                    }`}>
 
                     {
                         pet.adoptionStatus ===
@@ -79,9 +92,7 @@ const ListingCard = ({ pet }) => {
                         </p>
 
                         <h3 className="mt-1 text-2xl font-black text-foreground">
-                            {
-                                pet.requests
-                            }
+                            {requests?.length}
                         </h3>
 
                     </div>
@@ -89,42 +100,7 @@ const ListingCard = ({ pet }) => {
                 </div>
 
                 {/* Buttons */}
-                <div className="grid grid-cols-2 gap-3">
-
-                    {/* View */}
-                    <Link
-                        href={`/all-pets/${pet._id}`}
-                        className="w-full"
-                    >
-                        <Button
-                            size="lg"
-                            className="w-full border-green-500/20 font-semibold text-green-500 hover:bg-green-500/10"
-                            variant="outline"
-                        >
-                            <FaEye />
-
-                            View
-                        </Button>
-                    </Link>
-
-                    {/* Edit */}
-                    <EditPetModal pet={pet} />
-
-                    {/* Requests */}
-                    <Button
-                        size="lg"
-                        className=" w-full border-yellow-500/20 font-semibold text-amber-500 hover:bg-yellow-500/10"
-                        variant="outline"
-                    >
-                        <FaClipboardList />
-
-                        Requests
-                    </Button>
-
-                    {/* Delete */}
-                    <DeletePetAlert pet={pet} />
-
-                </div>
+                <ListingCardButtons pet={pet} requests={requests} />
 
             </div>
 

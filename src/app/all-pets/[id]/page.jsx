@@ -18,6 +18,7 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 import NoAdoptionCard from "@/components/pages/allPets/NoAdoptionCard";
 import AlreadyRequestedCard from "@/components/pages/allPets/AlreadyRequestedCard";
+import AlreadyAdoptedCard from "@/components/pages/allPets/AlreadyAdoptedCard";
 
 const PetDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -253,10 +254,13 @@ const PetDetailsPage = async ({ params }) => {
                                 existingRequest ?
                                     <AlreadyRequestedCard />
                                     :
-                                    < AdoptionForm
-                                        pet={pet}
-                                        user={user}
-                                    />
+                                    pet.adoptionStatus === "adopted" ?
+                                        <AlreadyAdoptedCard />
+                                        :
+                                        < AdoptionForm
+                                            pet={pet}
+                                            user={user}
+                                        />
                         }
 
                     </div>

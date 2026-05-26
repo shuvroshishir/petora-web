@@ -2,15 +2,21 @@ import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
 import { Avatar, Dropdown, Label } from "@heroui/react";
 import { Rectangles4 } from '@gravity-ui/icons';
 import Link from "next/link";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 export function ProfileDropdown({ user, handleSignout }) {
     return (
         <Dropdown>
-            <Dropdown.Trigger className="rounded-full">
-                <Avatar className="w-9 h-9 border-3 border-primary/50">
+            <Dropdown.Trigger className="rounded-full flex gap-1.5 items-center border border-primary/50 bg-primary/30 p-1">
+
+                <Avatar className="w-9 h-9 ">
                     <Avatar.Image referrerPolicy="no-referrer" alt={user?.name} src={user?.image} />
                     <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
+
+                <span className="font-medium hidden sm:block">{user?.name.split(" ")[0]}</span>
+                <MdKeyboardArrowDown />
+
             </Dropdown.Trigger>
             <Dropdown.Popover
                 placement="bottom end"

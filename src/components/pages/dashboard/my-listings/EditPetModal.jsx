@@ -82,7 +82,11 @@ export function EditPetModal({ pet }) {
                         <Modal.CloseTrigger />
 
                         <Modal.Body className="p-6">
+                            <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
+                                Update
+                            </div>
                             <Surface variant="default bg-accent">
+
                                 <Form onSubmit={handleSubmit} className="w-full">
                                     <Fieldset className="w-full">
                                         <Fieldset.Legend className="text-xl font-bold text-foreground">

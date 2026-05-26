@@ -20,6 +20,8 @@ const ProfilePage = async () => {
     const { name, email, image } = user
 
     const pets = await getMyListings();
+    const successfulAdoption = pets?.filter(pet => pet?.adoptionStatus === "adopted").length;
+
     const requests = await getMyRequests()
 
     return (
@@ -170,7 +172,7 @@ const ProfilePage = async () => {
                                     </p>
 
                                     <h3 className="mt-1 text-3xl font-black text-foreground">
-                                        0
+                                        {successfulAdoption}
                                     </h3>
                                 </div>
 

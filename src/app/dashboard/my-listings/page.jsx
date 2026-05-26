@@ -12,6 +12,10 @@ const MyListingsPage = async () => {
 
     const pets = await getMyListings();
 
+    const totalListing = pets?.length;
+
+    const successfulAdoption = pets?.filter(pet => pet?.adoptionStatus === "adopted").length;
+
     return (
         <section className="space-y-8 p-4 sm:p-6">
 
@@ -64,7 +68,7 @@ const MyListingsPage = async () => {
                             </p>
 
                             <h2 className="mt-3 text-4xl font-black text-foreground">
-                                {pets?.length}
+                                {totalListing}
                             </h2>
 
                         </div>
@@ -89,7 +93,7 @@ const MyListingsPage = async () => {
                             </p>
 
                             <h2 className="mt-3 text-4xl font-black text-green-500">
-                                3
+                                {totalListing - successfulAdoption}
                             </h2>
 
                         </div>
@@ -114,7 +118,7 @@ const MyListingsPage = async () => {
                             </p>
 
                             <h2 className="mt-3 text-4xl font-black text-primary">
-                                1
+                                {successfulAdoption}
                             </h2>
 
                         </div>

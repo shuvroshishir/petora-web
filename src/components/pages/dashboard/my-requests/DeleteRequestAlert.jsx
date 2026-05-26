@@ -45,7 +45,7 @@ const DeleteRequestAlert = ({ id, petName }) => {
         <AlertDialog>
             <Button
                 variant="outline"
-                className="border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10"
+                className="border-red-500/20 font-semibold text-red-500 hover:bg-red-500/10 flex-1"
             >
                 <FaTrash />
 
