@@ -35,7 +35,7 @@ const MyRequestsPage = async () => {
     ).length;
 
     return (
-        <section className="space-y-8 p-4 sm:p-6">
+        <section className="space-y-8 p-2 sm:p-6">
 
             {/* Header */}
             <div>

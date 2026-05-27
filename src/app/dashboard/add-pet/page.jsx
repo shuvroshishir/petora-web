@@ -63,7 +63,7 @@ const AddPetPage = () => {
     };
 
     return (
-        <section className="p-4 sm:p-6">
+        <section className="p-2 sm:p-6">
 
             {/* Header */}
             <div>

@@ -96,7 +96,7 @@ const Banner = () => {
                             </Link>
 
                             <Link
-                                href="/about"
+                                href="#about"
                                 className="rounded-full border border-primary px-7 py-3.5 font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
                             >
 

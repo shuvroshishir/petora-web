@@ -13,7 +13,7 @@ import BackToTopBtn from "./BackToTopBtn";
 
 const Footer = () => {
     return (
-        <footer className="relative border-t border-muted-foreground/20 bg-accent">
+        <footer id="about" className="relative border-t border-muted-foreground/20 bg-accent">
 
             {/* Back To Top */}
             <BackToTopBtn />

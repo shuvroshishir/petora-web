@@ -17,7 +17,7 @@ const MyListingsPage = async () => {
     const successfulAdoption = pets?.filter(pet => pet?.adoptionStatus === "adopted").length;
 
     return (
-        <section className="space-y-8 p-4 sm:p-6">
+        <section className="space-y-8 p-2 sm:p-6">
 
             {/* Header */}
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">

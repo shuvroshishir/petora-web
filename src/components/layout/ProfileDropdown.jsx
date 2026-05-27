@@ -1,4 +1,4 @@
-import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
+import { ArrowRightFromSquare, Gear, Globe, Persons, Plus, SquareListUl } from "@gravity-ui/icons";
 import { Avatar, Dropdown, Label } from "@heroui/react";
 import { Rectangles4 } from '@gravity-ui/icons';
 import Link from "next/link";
@@ -34,6 +34,27 @@ export function ProfileDropdown({ user, handleSignout }) {
                         <div className="flex w-full items-center justify-between gap-2">
                             <Label>Dashboard</Label>
                             <Rectangles4 className="size-3.5 text-success" />
+                        </div>
+                    </Dropdown.Item>
+
+                    <Dropdown.Item id="my-requests" textValue="Dashboard" as={Link} href="/dashboard/my-requests">
+                        <div className="flex w-full items-center justify-between gap-2">
+                            <Label>My Requests</Label>
+                            <Globe className="size-3.5 text-warning" />
+                        </div>
+                    </Dropdown.Item>
+
+                    <Dropdown.Item id="my-listings" textValue="Dashboard" as={Link} href="/dashboard/my-listings">
+                        <div className="flex w-full items-center justify-between gap-2">
+                            <Label>My Listings</Label>
+                            <SquareListUl className="size-3.5 text-warning" />
+                        </div>
+                    </Dropdown.Item>
+
+                    <Dropdown.Item id="add-pet" textValue="Dashboard" as={Link} href="/dashboard/add-pet">
+                        <div className="flex w-full items-center justify-between gap-2">
+                            <Label>Add Pet</Label>
+                            <Plus className="size-3.5 text-warning" />
                         </div>
                     </Dropdown.Item>
 

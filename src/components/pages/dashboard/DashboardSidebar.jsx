@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import {
     FaClipboardList,
     FaHeart,
-    FaPlus,
     FaUser,
 } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
 
 const DashboardSidebar = () => {
     const pathname = usePathname();
@@ -24,14 +24,14 @@ const DashboardSidebar = () => {
             icon: <FaClipboardList />,
         },
         {
-            title: "Add Pet",
-            href: "/dashboard/add-pet",
-            icon: <FaPlus />,
-        },
-        {
             title: "My Listings",
             href: "/dashboard/my-listings",
             icon: <FaHeart />,
+        },
+        {
+            title: "Add Pet",
+            href: "/dashboard/add-pet",
+            icon: <FaPlus />,
         },
     ];
 

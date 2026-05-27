@@ -11,6 +11,7 @@ import { image } from "framer-motion/client";
 import { EditProfileModal } from "@/components/pages/dashboard/EditProfileModal";
 import { getMyListings } from "@/actions/getMyListings";
 import { getMyRequests } from "@/actions/getMyRequests";
+import LogoutBtn from "@/components/pages/dashboard/LogoutBtn";
 
 const ProfilePage = async () => {
     const session = await auth.api.getSession({
@@ -25,7 +26,7 @@ const ProfilePage = async () => {
     const requests = await getMyRequests()
 
     return (
-        <section className="p-4 sm:p-6">
+        <section className="p-2 sm:p-6">
             {/* Header */}
             <div>
                 <div className="inline-flex rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary mb-4">
@@ -113,7 +114,11 @@ const ProfilePage = async () => {
                             </div>
                         </div>
 
-                        {user && <EditProfileModal user={user} />}
+                        {/* btns */}
+                        <div className="flex flex-col gap-3">
+                            {user && <EditProfileModal user={user} />}
+                            <LogoutBtn />
+                        </div>
 
                     </div>
 
