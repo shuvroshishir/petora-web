@@ -8,7 +8,7 @@ Petora is a modern pet adoption platform where users can explore pets, send adop
 
 ## 🌐 Live URL
 
-🔗 link
+🔗 [petora.com.bd](https://petora-web.vercel.app/)
 
 ---
 
