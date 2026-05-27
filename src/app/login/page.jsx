@@ -13,9 +13,11 @@ import {
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
+
+    const router = useRouter();
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -29,11 +31,12 @@ const LoginPage = () => {
 
         if (data) {
             toast.success("Login Successful");
-            redirect('/')
+            router.push('/')
         }
 
         if (error) {
             toast.error("Error: " + error.message);
+            e.target.reset();
         }
     };
 

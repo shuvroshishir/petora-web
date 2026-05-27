@@ -16,12 +16,13 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const AddPetPage = () => {
     const user = useCurrentUser();
 
+    const router = useRouter();
     const handleAddPet = async (e) => {
         e.preventDefault();
 
@@ -55,11 +56,12 @@ const AddPetPage = () => {
 
         if (result.insertedId) {
             toast.success("Pet Listed successfully!");
+            e.target.reset();
+            router.push('/dashboard/my-listings')
         } else {
             toast.error("Failed to add Pet.");
         }
-        e.target.reset();
-        redirect('/dashboard/my-listings')
+
     };
 
     return (

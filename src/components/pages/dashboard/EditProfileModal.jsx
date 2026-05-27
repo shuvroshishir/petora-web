@@ -32,7 +32,6 @@ export function EditProfileModal({ user }) {
             {
                 onSuccess: () => {
                     toast.success("Updated Successfully");
-
                     router.refresh();
                 },
 

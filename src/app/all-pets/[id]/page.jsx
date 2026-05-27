@@ -251,12 +251,13 @@ const PetDetailsPage = async ({ params }) => {
                             pet.ownerEmail === user.email ?
                                 <NoAdoptionCard />
                                 :
-                                existingRequest ?
-                                    <AlreadyRequestedCard />
+                                pet.adoptionStatus === "adopted" ?
+                                    <AlreadyAdoptedCard />
                                     :
-                                    pet.adoptionStatus === "adopted" ?
-                                        <AlreadyAdoptedCard />
+                                    existingRequest ?
+                                        <AlreadyRequestedCard />
                                         :
+
                                         < AdoptionForm
                                             pet={pet}
                                             user={user}

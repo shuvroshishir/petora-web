@@ -13,7 +13,6 @@ const LogoutBtn = () => {
             fetchOptions: {
                 onSuccess: () => {
                     toast.success("Signed out successfully");
-
                     router.push("/");
                 },
 

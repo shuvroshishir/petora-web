@@ -8,7 +8,6 @@ import {
     FaClock,
     FaPaw,
 } from "react-icons/fa6";
-import DeleteRequestAlert from "../dashboard/my-requests/DeleteRequestAlert";
 
 const AlreadyRequestedCard = () => {
     return (
@@ -72,14 +71,12 @@ const AlreadyRequestedCard = () => {
                     className="flex-1"
                 >
                     <Button
-                        className="bg-gradient w-full font-semibold text-white  hover:brightness-110"
+                        className="bg-gradient h-12 w-full font-semibold text-white  hover:brightness-105 hover:scale-105 transition-default"
                     >
                         My Requests
                         <FaArrowRight />
                     </Button>
                 </Link>
-
-                <DeleteRequestAlert />
             </div>
 
         </div>

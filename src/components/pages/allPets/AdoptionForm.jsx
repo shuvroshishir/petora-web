@@ -67,9 +67,9 @@ const AdoptionForm = ({ pet, user }) => {
         const result = await res.json();
 
         if (result.insertedId) {
+            toast.success("Adoption request sent successfully!");
             e.target.reset();
             router.refresh();
-            toast.success("Adoption request sent successfully!");
         } else {
             toast.error("Failed to send adoption request");
         }

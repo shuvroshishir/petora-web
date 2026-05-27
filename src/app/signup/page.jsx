@@ -14,13 +14,14 @@ import {
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 const SignUpPage = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+    const router = useRouter();
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -36,7 +37,7 @@ const SignUpPage = () => {
 
         if (data) {
             toast.success("Sign Up Successful");
-            redirect("/login");
+            router.push("/login");
         }
 
         if (error) {
