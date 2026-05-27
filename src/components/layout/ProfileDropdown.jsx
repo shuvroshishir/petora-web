@@ -37,21 +37,21 @@ export function ProfileDropdown({ user, handleSignout }) {
                         </div>
                     </Dropdown.Item>
 
-                    <Dropdown.Item id="my-requests" textValue="Dashboard" as={Link} href="/dashboard/my-requests">
+                    <Dropdown.Item id="my-requests" textValue="Dashboard" as={Link} href="/dashboard/my-requests" className="lg:hidden">
                         <div className="flex w-full items-center justify-between gap-2">
                             <Label>My Requests</Label>
                             <Globe className="size-3.5 text-warning" />
                         </div>
                     </Dropdown.Item>
 
-                    <Dropdown.Item id="my-listings" textValue="Dashboard" as={Link} href="/dashboard/my-listings">
+                    <Dropdown.Item id="my-listings" textValue="Dashboard" as={Link} href="/dashboard/my-listings" className="lg:hidden">
                         <div className="flex w-full items-center justify-between gap-2">
                             <Label>My Listings</Label>
                             <SquareListUl className="size-3.5 text-warning" />
                         </div>
                     </Dropdown.Item>
 
-                    <Dropdown.Item id="add-pet" textValue="Dashboard" as={Link} href="/dashboard/add-pet">
+                    <Dropdown.Item id="add-pet" textValue="Dashboard" as={Link} href="/dashboard/add-pet" className="lg:hidden">
                         <div className="flex w-full items-center justify-between gap-2">
                             <Label>Add Pet</Label>
                             <Plus className="size-3.5 text-warning" />
